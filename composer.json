@@ -1,0 +1,19 @@
+{
+    "name": "snapycloud/php-api",
+    "description": "php sdk for use snapyapi and snapycrm",
+    "license": "MIT License",
+    "homepage": "https://github.com/snapycloud/php-api",
+    "authors": [
+        {
+            "name": "abraham ghaemi",
+            "email": "ig.ghaemi@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Snapycloud\\PhpApi": "src"
+        }
+    }
+}
