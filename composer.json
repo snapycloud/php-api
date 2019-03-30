@@ -9,7 +9,7 @@
             "email": "ig.ghaemi@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "develop",
     "require": {},
     "autoload": {
         "exclude-from-classmap": ["/test/"],

@@ -24,6 +24,7 @@ class SnapyClient
 
     private $container = [
         'contact' => 'SnapyCloud\PhpApi\Entities\Contact',
+        'account' => 'SnapyCloud\PhpApi\Entities\Account',
     ];
 
     public function __construct($url = null, $userName = null, $password = null)
@@ -182,7 +183,7 @@ class SnapyClient
 
         foreach ($paramList as $name) {
             if (empty($this->$name)) {
-                throw new \Exception('EspoClient: Parameter "'.$name.'" is not defined.');
+                throw new \Exception('SnapyClient: Parameter "'.$name.'" is not defined.');
             }
         }
 
