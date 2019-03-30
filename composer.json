@@ -1,7 +1,7 @@
 {
     "name": "snapycloud/php-api",
     "description": "php sdk for use snapyapi and snapycrm",
-    "license": "MIT License",
+    "license": "MIT",
     "homepage": "https://github.com/snapycloud/php-api",
     "authors": [
         {
