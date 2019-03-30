@@ -12,8 +12,9 @@
     "minimum-stability": "dev",
     "require": {},
     "autoload": {
+        "exclude-from-classmap": ["/test/"],
         "psr-4": {
-            "Snapycloud\\PhpApi": "src"
+            "SnapyCloud\\PhpApi\\": "src/"
         }
     }
 }
