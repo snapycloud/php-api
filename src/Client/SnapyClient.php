@@ -22,6 +22,10 @@ class SnapyClient
 
     private $secretKey = null;
 
+    private $container = [
+        'contact' => 'SnapyCloud\PhpApi\Entities\Contact',
+    ];
+
     public function __construct($url = null, $userName = null, $password = null)
     {
         if (isset($url)) {
@@ -33,6 +37,16 @@ class SnapyClient
         if (isset($password)) {
             $this->password = $password;
         }
+    }
+
+    public function entity($name)
+    {
+        $entity = $this->container[strtolower($name)];
+        $entity = new $entity($this->url);
+        $entity->setApiKey($this->apiKey);
+        $entity->setSecretKey($this->secretKey);
+
+        return $entity;
     }
 
     public function setUrl($url)
@@ -137,7 +151,7 @@ class SnapyClient
         $errorMessage = !empty($header['X-Status-Reason']) ? $header['X-Status-Reason'] : 'SnapyClient: Unknown Error';
 
         curl_close($ch);
-        throw new \Exception($errorMessage, $responseCode);
+        throw new \Exception($errorMessage . ' ' . $responseCode);
     }
 
     public function getResponseContentType()
