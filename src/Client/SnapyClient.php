@@ -22,6 +22,8 @@ class SnapyClient
 
     private $secretKey = null;
 
+    private $token = null;
+
     private $container = [
         'contact' => 'SnapyCloud\PhpApi\Entities\Contact',
         'account' => 'SnapyCloud\PhpApi\Entities\Account',
@@ -38,6 +40,13 @@ class SnapyClient
         if (isset($password)) {
             $this->password = $password;
         }
+    }
+
+    public function setToken($token)
+    {
+        $this->token = $token;
+
+        return $this;
     }
 
     public function entity($name)
@@ -105,6 +114,8 @@ class SnapyClient
             $headerList[] = $authHeader;
             curl_setopt($ch, CURLOPT_USERPWD, $this->userName.':'.$this->password);
             curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+        } else if($this->token) {
+            $authHeader = "Espo-Authorization:" . base64_encode($this->userName . ":" . $this->token);
         } else if ($this->apiKey && $this->secretKey) {
             $string = $method . ' /' . $action;
             $authPart = base64_encode($this->apiKey . ':' . hash_hmac('sha256', $string, $this->secretKey, true));
