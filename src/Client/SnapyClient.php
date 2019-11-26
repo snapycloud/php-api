@@ -115,7 +115,8 @@ class SnapyClient
             curl_setopt($ch, CURLOPT_USERPWD, $this->userName.':'.$this->password);
             curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         } else if($this->token) {
-            $authHeader = "Espo-Authorization:" . base64_encode($this->userName . ":" . $this->token);
+            $authHeader = "Espo-Authorization:" . $this->token;
+            $headerList[] = $authHeader;
         } else if ($this->apiKey && $this->secretKey) {
             $string = $method . ' /' . $action;
             $authPart = base64_encode($this->apiKey . ':' . hash_hmac('sha256', $string, $this->secretKey, true));
